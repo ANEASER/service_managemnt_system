@@ -1,9 +1,6 @@
 <?php
 
-// Connect to the database
 include 'db_connect.php';
-
-// Start a session
 session_start();
 
 // Check if the user is logged in
@@ -17,27 +14,61 @@ $username = $_SESSION['username'];
 
 // Create the SQL statement to get the user's information
 $sql_1 = "SELECT * FROM users WHERE username = '$username'";
-$sql_2 = "SELECT * FROM transactions WHERE  buyer = '$username' or seller ='$username' ";
+$sql_2 = "SELECT * FROM transactions WHERE  buyer = '$username' ";
+$sql_3 = "SELECT * FROM transactions WHERE  seller ='$username' ";
 
 // Execute the statement
 $result = mysqli_query($conn, $sql_1);
 $row = mysqli_fetch_array($result);
 
 $result_1 = mysqli_query($conn, $sql_2);
-$rows = mysqli_num_rows($result_1);
-
+$result_2 = mysqli_query($conn, $sql_3);
 
 if (mysqli_num_rows($result_1) > 0) {
+  echo "Buying";
+  echo "<table>";
+  echo "<tr>";
+  echo "<th>Ref_ID</th>";
+  echo "<th>seller</th>";
+  echo "<th>sale</th>";
+  echo "</tr>";
+
   while ($row_1 = mysqli_fetch_array($result_1)) {
-    echo "<p>id : " . $row_1['id'] . "</p>";
-    echo "<p>seller: " . $row_1['seller'] . "</p>";
-    echo "<p>buyer: " . $row_1['buyer'] . "</p>";
-    echo "<p>Sale: " . $row_1['sale'] . "</p>";
-    echo "-----------------------------------------------";
+    echo "<tr>";
+    echo "<td>".$row_1['id']."</td>";
+    echo "<td>".$row_1['seller']."</td>";
+    echo "<td>".$row_1['sale']."</td>";
+    echo "</tr>";
   }
+
+echo "</table>";
 } else {
-  //echo "$rows"." transactions found.";
+   echo "None";
 }
+
+if (mysqli_num_rows($result_2) > 0) {
+  echo "Selling";
+  echo "<table>";
+  echo "<tr>";
+  echo "<th>Ref_ID</th>";
+  echo "<th>buyer</th>";
+  echo "<th>sale</th>";
+  echo "</tr>";
+
+  while ($row_2 = mysqli_fetch_array($result_2)) {
+    echo "<tr>";
+    echo "<td>".$row_2['id']."</td>";
+    echo "<td>".$row_2['buyer']."</td>";
+    echo "<td>".$row_2['sale']."</td>";
+    echo "</tr>";
+  }
+
+echo "</table>";
+} else {
+   echo "None";
+}
+
+
 
 ?>
 <center>
@@ -51,4 +82,5 @@ if (mysqli_num_rows($result_1) > 0) {
 <br>
 <a href="market.php">Market</a>
 <a href="logout.php">Logout</a>
+<a href="deactivate.php">Deactivate</a>
 </center>
