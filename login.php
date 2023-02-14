@@ -16,6 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Verify the submitted password against the hash
     if (($username =='Admin') && ($password == 'password')) {
+      session_start();
+      $_SESSION['username'] = $username;
       header('Location: admin.php');
       exit;
     } else if ($password == $password_hash) {
@@ -27,8 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       echo "Incorrect username or password";
     }
   } else if (($username =='Admin') && ($password == 'password')) {
-    header('Location: admin.php');
-    exit;
+      session_start();
+      $_SESSION['username'] = $username;
+      header('Location: admin.php');
+      exit;
   }else {
     echo "Incorrect username or password";
   }
