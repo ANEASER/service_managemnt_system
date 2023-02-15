@@ -1,3 +1,4 @@
+<html>
 <?php
 
 include 'db_connect.php';
@@ -46,3 +47,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <br>
   <input type="submit" value="Login">
 </form>
+</html>
