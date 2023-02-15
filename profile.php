@@ -1,3 +1,4 @@
+<html></html>
 <?php
 
 // Connect to the database
