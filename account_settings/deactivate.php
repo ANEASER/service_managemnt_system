@@ -13,6 +13,9 @@
     $sql = "DELETE FROM users WHERE username = '$current_user' ";
     mysqli_query($conn, $sql);
 
+    $sql_1 = "DELETE FROM gigs WHERE username = '$current_user' ";
+    mysqli_query($conn, $sql_1);
+
     $_SESSION = array();
     
     // Destroy the session

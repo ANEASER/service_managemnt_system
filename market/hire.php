@@ -16,7 +16,7 @@ $buyer_username = $_SESSION['username'];
 // Get the username of the seller from the form data
 $seller_username = $_POST['seller_username'];
 
-$seller_sql = "SELECT * FROM users WHERE username = '$seller_username'";
+$seller_sql = "SELECT * FROM gigs WHERE username = '$seller_username'";
 $seller_result = mysqli_query($conn, $seller_sql);
 $seller = mysqli_fetch_array($seller_result);
 
