@@ -1,9 +1,9 @@
 <?php 
-    include 'db_connect.php';
+    include '../db_connect.php';
 
     session_start();
     if (!isset($_SESSION['username'])) {
-        header('Location: login.php');
+        header('Location: ../login.php');
       }
       
     
@@ -18,9 +18,9 @@
     // Destroy the session
     session_destroy();
 
-    echo "deactivated>";
+    echo "deactivated";
     
     // Redirect the user to the login page
-    header('Location: login.php');
+    header('Location: ../login.php');
     exit;
 ?>

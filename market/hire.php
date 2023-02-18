@@ -1,13 +1,13 @@
 <?php
  
- include 'db_connect.php';
+ include '../db_connect.php';
 
 // Start a session
 session_start();
 
 // Check if the user is logged in
 if (!isset($_SESSION['username'])) {
-  header('Location: login.php');
+  header('Location: ../login.php');
 }
 
 // Get the username of the currently logged in user (buyer)
@@ -32,7 +32,7 @@ mysqli_stmt_execute($sql_1);
 
 $result = mysqli_query($conn, $sql);
 mysqli_close($conn);
-header('Location: profile.php');
+header('Location: ../profile.php');
 ?>
 
 

@@ -80,7 +80,7 @@ echo "</table>";
 <p>Wallet <?php echo $row['amount']; ?></p>
 <a href="update.php">Update Services</a>
 <br>
-<a href="market.php">Market</a>
-<a href="logout.php">Logout</a>
-<a href="deactivate.php">Deactivate</a>
+<a href="market/market.php">Market</a>
+<a href="out/logout.php">Logout</a>
+<a href="out/deactivate.php">Deactivate</a>
 </center>
