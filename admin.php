@@ -20,12 +20,12 @@
     
       // Create the SQL statement to update the user's information
       $sql = "UPDATE users SET  username='$new_name', email='$email' WHERE username = '$name'";
-    
+      $sql_1 = "UPDATE gigs SET  username='$new_name' WHERE username = '$name'";
       // Execute the statement
       $result = mysqli_query($conn, $sql);
-    
+      $result_1 = mysqli_query($conn, $sql_1);
       // Check if the update was successful
-      if ($result) {
+      if ($result && $result_1) {
         echo "<script>alert('Service information updated successfully!');</script>";
         header('Location: admin.php');
       } else {

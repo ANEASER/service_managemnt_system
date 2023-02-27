@@ -1,3 +1,41 @@
+<html>
+<head>
+  <style>
+    .Gigs{
+      display:flex;
+      flex-direction:row;
+    }  
+  </style>
+</head>
+<body>
+  <nav style="dispaly:flex">
+  <a href="market/market.php">Market</a>
+  <a href="account_settings/logout.php">Logout</a>
+  <a href="account_settings/deactivate.php">Deactivate</a>
+  <a href="postgig.php">PostGIG</a>
+  </nav>
+
+  
+
+<?php
+  include 'db_connect.php';
+  session_start();
+  $username = $_SESSION['username'];
+
+  $sql_5 = "SELECT * FROM users WHERE username = '$username'";
+  $result_4 = mysqli_query($conn, $sql_5);
+  $row = mysqli_fetch_array($result_4);
+
+?>
+
+<center>
+  <p style="color:red">Username: <?php echo $row['username']; ?></p>
+  <p>Email: <?php echo $row['email']; ?></p>
+  <p>Wallet <?php echo $row['amount']; ?></p>
+  <br>
+  </center>
+
+
 <?php
 
 include 'db_connect.php';
@@ -25,6 +63,8 @@ $row = mysqli_fetch_array($result);
 $result_1 = mysqli_query($conn, $sql_2);
 $result_2 = mysqli_query($conn, $sql_3);
 
+echo '<div style="display:flex; flex-direction:row;">';
+echo '<div>';
 if (mysqli_num_rows($result_1) > 0) {
   echo "Buying";
   echo "<table>";
@@ -46,7 +86,9 @@ echo "</table>";
 } else {
    echo "None";
 }
+echo '</div>';
 
+echo '<div>';
 if (mysqli_num_rows($result_2) > 0) {
   echo "Selling";
   echo "<table>";
@@ -68,7 +110,8 @@ echo "</table>";
 } else {
    echo "None";
 }
-
+echo '</div>';
+echo '</div>';
 
 $sql_4 = "SELECT * FROM gigs WHERE username = '$username'";
 
@@ -89,6 +132,8 @@ while ($row = mysqli_fetch_array($result_3)) {
   echo '</div>';
 }
 
+echo '</div>';
+
 if (isset($_POST['delete'])) {
   $id = $_POST['id'];
   $delete_query = "DELETE FROM gigs WHERE id='$id'";
@@ -96,19 +141,7 @@ if (isset($_POST['delete'])) {
   header("Location: profile.php");
 }
 
-$sql_5 = "SELECT * FROM users WHERE username = '$username'";
-$result_4 = mysqli_query($conn, $sql_5);
-$row = mysqli_fetch_array($result_4);
-
-
 ?>
-<center>
-  <p style="color:red">Username: <?php echo $row['username']; ?></p>
-  <p>Email: <?php echo $row['email']; ?></p>
-  <p>Wallet <?php echo $row['amount']; ?></p>
-  <br>
-  <a href="market/market.php">Market</a>
-  <a href="account_settings/logout.php">Logout</a>
-  <a href="account_settings/deactivate.php">Deactivate</a>
-  <a href="postgig.php">PostGIG</a>
-</center>
+
+</body>
+</html>
