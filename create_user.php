@@ -58,6 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <br>
   <input type="submit" value="Create User">
 </form>
+<p>Already have an account?</p>
+<a href="login.php">Login</a>
 
 
 <script>

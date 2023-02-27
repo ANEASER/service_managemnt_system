@@ -14,7 +14,6 @@
   <a href="account_settings/deactivate.php">Deactivate</a>
   <a href="postgig.php">PostGIG</a>
   </nav>
-
   
 
 <?php
@@ -28,10 +27,30 @@
 
 ?>
 
+<?php
+
+  session_start();
+  $username = $_SESSION['username'];
+
+  
+  $file_ext = "jpg";
+  $image_dir = "uploads/";
+  $image_path = $image_dir . $username . "." . $file_ext;
+ 
+  if (file_exists($image_path)) {
+    echo '<img src="' . $image_path . '" alt="' . $username . '">';
+  } else {
+    echo 'None';
+  }
+?>
+
+
 <center>
   <p style="color:red">Username: <?php echo $row['username']; ?></p>
   <p>Email: <?php echo $row['email']; ?></p>
   <p>Wallet <?php echo $row['amount']; ?></p>
+  <button> withdraw </button>
+  <a href="account_settings/edit_profile.php">Edit details</a>
   <br>
   </center>
 
