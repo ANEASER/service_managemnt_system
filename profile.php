@@ -1,3 +1,60 @@
+<html>
+<head>
+  <style>
+    .Gigs{
+      display:flex;
+      flex-direction:row;
+    }  
+  </style>
+</head>
+<body>
+  <nav style="dispaly:flex">
+  <a href="market/market.php">Market</a>
+  <a href="account_settings/logout.php">Logout</a>
+  <a href="account_settings/deactivate.php">Deactivate</a>
+  <a href="postgig.php">PostGIG</a>
+  </nav>
+  
+
+<?php
+  include 'db_connect.php';
+  session_start();
+  $username = $_SESSION['username'];
+
+  $sql_5 = "SELECT * FROM users WHERE username = '$username'";
+  $result_4 = mysqli_query($conn, $sql_5);
+  $row = mysqli_fetch_array($result_4);
+
+?>
+
+<?php
+
+  session_start();
+  $username = $_SESSION['username'];
+
+  
+  $file_ext = "jpg";
+  $image_dir = "uploads/";
+  $image_path = $image_dir . $username . "." . $file_ext;
+ 
+  if (file_exists($image_path)) {
+    echo '<img src="' . $image_path . '" alt="' . $username . '">';
+  } else {
+    echo 'None';
+  }
+?>
+
+
+<center>
+  <p style="color:red">Username: <?php echo $row['username']; ?></p>
+  <p>Email: <?php echo $row['email']; ?></p>
+  <p>Wallet <?php echo $row['amount']; ?></p>
+  <button> withdraw </button>
+  <a href="account_settings/edit_profile.php">Edit details</a>
+  <br>
+  </center>
+
+
 <?php
 
 include 'db_connect.php';
@@ -7,6 +64,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
   header('Location: login.php');
 }
+
 
 // Get the user's information from the session
 $username = $_SESSION['username'];
@@ -24,6 +82,8 @@ $row = mysqli_fetch_array($result);
 $result_1 = mysqli_query($conn, $sql_2);
 $result_2 = mysqli_query($conn, $sql_3);
 
+echo '<div style="display:flex; flex-direction:row;">';
+echo '<div>';
 if (mysqli_num_rows($result_1) > 0) {
   echo "Buying";
   echo "<table>";
@@ -45,7 +105,9 @@ echo "</table>";
 } else {
    echo "None";
 }
+echo '</div>';
 
+echo '<div>';
 if (mysqli_num_rows($result_2) > 0) {
   echo "Selling";
   echo "<table>";
@@ -67,20 +129,38 @@ echo "</table>";
 } else {
    echo "None";
 }
+echo '</div>';
+echo '</div>';
 
+$sql_4 = "SELECT * FROM gigs WHERE username = '$username'";
 
+$result_3 = mysqli_query($conn, $sql_4);
+
+echo'<div class="Gigs">';
+// Loop through the results and display the information for each user
+while ($row = mysqli_fetch_array($result_3)) {
+  echo '<div>';
+  echo "<p>ID: " . $row['id'] . "</p>";
+  echo "<p>Username: " . $row['username'] . "</p>";
+  echo "<p>Service: " . $row['gig_name'] . "</p>";
+  echo "<p>Price: " . $row['price'] . "</p>";
+  echo "<form method='post' action=''>
+          <input type='hidden' name='id' value='" . $row['id'] . "'>
+          <input type='submit' name='delete' value='Delete'>
+        </form>";
+  echo '</div>';
+}
+
+echo '</div>';
+
+if (isset($_POST['delete'])) {
+  $id = $_POST['id'];
+  $delete_query = "DELETE FROM gigs WHERE id='$id'";
+  mysqli_query($conn, $delete_query);
+  header("Location: profile.php");
+}
 
 ?>
-<center>
-<p style="color:red">Username: <?php echo $row['username']; ?></p>
-<p>Email: <?php echo $row['email']; ?></p>
-<p>Service-1 <?php echo $row['service_1']; ?></p>
-<p>Service-2 <?php echo $row['service_2']; ?></p>
-<p>Service-3 <?php echo $row['service_3']; ?></p>
-<p>Wallet <?php echo $row['amount']; ?></p>
-<a href="update.php">Update Services</a>
-<br>
-<a href="market/market.php">Market</a>
-<a href="out/logout.php">Logout</a>
-<a href="out/deactivate.php">Deactivate</a>
-</center>
+
+</body>
+</html>

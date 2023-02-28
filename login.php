@@ -8,32 +8,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $password = $_POST['password'];
 
   // Retrieve the user's password hash from the database
-  $sql = "SELECT password FROM users WHERE username = '$username'";
+  $sql = "SELECT * FROM users WHERE username = '$username'";
   $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_array($result);
     $password_hash = $row['password'];
+    $role = $row['role'];
 
     // Verify the submitted password against the hash
-    if (($username =='Admin') && ($password == 'password')) {
+    if (($role =='admin') && ($password == $password_hash)) {
       session_start();
       $_SESSION['username'] = $username;
       header('Location: admin.php');
-      exit;
-    } else if ($password == $password_hash) {
+    } else if (($role =='') && ($password == $password_hash)) {
       session_start();
       $_SESSION['username'] = $username;
       header('Location: profile.php');
-      exit;
     } else {
       echo "Incorrect username or password";
     }
-  } else if (($username =='Admin') && ($password == 'password')) {
-      session_start();
-      $_SESSION['username'] = $username;
-      header('Location: admin.php');
-      exit;
-  }else {
+  // } else if (($username =='Admin') && ($password == 'password')) {
+  //     session_start();
+  //     $_SESSION['username'] = $username;
+  //     header('Location: admin.php');
+  //     exit;
+   }else {
     echo "Incorrect username or password";
   }
 }
@@ -48,5 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <label for="password">Password:</label>
   <input type="password" id="password" name="password">
   <br>
-  <input type="submit" value="Login">
+  <input type="submit" value="Login"><br>
 </form>
+<p>Haven't an account?</p>
+<a href="create_user.php">Register</a>

@@ -15,7 +15,7 @@ if (!isset($_SESSION['username'])) {
 $current_user = $_SESSION['username'];
 
 // Create the SQL statement
-$sql = "SELECT * FROM users WHERE username != '$current_user'";
+$sql = "SELECT * FROM gigs WHERE username != '$current_user'";
 
 // Execute the statement
 $result = mysqli_query($conn, $sql);
@@ -25,9 +25,7 @@ echo'<div class="Gigs">';
 while ($row = mysqli_fetch_array($result)) {
   echo'<div>';
   echo "<p>Username: " . $row['username'] . "</p>";
-  echo "<p>Service-1: " . $row['service_1'] . "</p>";
-  echo "<p>Service-2: " . $row['service_2'] . "</p>";
-  echo "<p>Service-3: " . $row['service_3'] . "</p>";
+  echo "<p>Service-1: " . $row['gig_name'] . "</p>";
   echo "<p>Price: " . $row['price'] . "</p>";
   echo "<form action='hire.php' method='post'>";
   echo "<input type='hidden' name='seller_username' value='" . $row['username'] . "'>";

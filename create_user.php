@@ -10,11 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $username = $_POST['username'];
   $email = $_POST['email'];
   $password = $_POST['password']; //if this hashed this won't work
-  $service_1= $_POST["service_1"];
-  $service_2 = $_POST["service_2"];
-  $service_3 = $_POST["service_3"];
+  $password_1 = $_POST['password_1'];
   $amount =  0;
-  $price = $_POST["price"];
 
   // Check if the username already exists
   $sql = "SELECT username FROM users WHERE username = '$username'";
@@ -25,11 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Error: The username is already taken";
   }
 
+  elseif( $password != $password_1){
+    echo "Passwords not match";
+  }
+
+  else {
   // Prepare the INSERT statement
-  $stmt = mysqli_prepare($conn, "INSERT INTO users (username, email, password,service_1,service_2,service_3,amount,price) VALUES (?, ?, ?, ? ,?, ?, ?,?)");
-  mysqli_stmt_bind_param($stmt, 'ssssssss', $username, $email, $password,$service_1,$service_2,$service_3,$amount,$price); // ssss mean number of varables
-
-
+  $stmt = mysqli_prepare($conn, "INSERT INTO users (username, email, password,amount) VALUES (?, ?, ?, ?)");
+  mysqli_stmt_bind_param($stmt, 'ssss', $username, $email, $password,$amount); // ssss mean number of varables
   // Execute the statement
  
   if (mysqli_stmt_execute($stmt)) {
@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
     } else {
     echo "Error: " . mysqli_stmt_error($stmt);
+  }
   }
 }
 ?>
@@ -52,32 +53,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <label for="password">Password:</label>
   <input type="password" id="password" name="password">
   <br>
-  <label for="select_1">Select an option:</label>
-  <select id="select_1" name="service_1">
-    <option value="None">None</option>
-    <option value="Content Writing">Content Writing</option>
-    <option value="Web Development">Web Development</option>
-    <option value="Media Design">Media Design</option>
-  </select><br>
-  <label for="select_2">Select an option:</label>
-  <select id="select_2" name="service_2">
-    <option value="None">None</option>
-    <option value="Content Writing">Content Writing</option>
-    <option value="Web Development">Web Development</option>
-    <option value="Media Design">Media Design</option>
-  </select><br>
-  <label for="select_3">Select an option:</label>
-  <select id="select_3" name="service_3">
-    <option value="None">None</option>
-    <option value="Content Writing">Content Writing</option>
-    <option value="Web Development">Web Development</option>
-    <option value="Media Design">Media Design</option>
-  </select><br>
-  <label for="price">Your Price</label>
-  <input type="number" name="price" min="0" max="30"> <br>
+  <label for="password">Enter Password again:</label>
+  <input type="password" id="password" name="password_1">
+  <br>
   <input type="submit" value="Create User">
-
 </form>
+<p>Already have an account?</p>
+<a href="login.php">Login</a>
 
 
 <script>
