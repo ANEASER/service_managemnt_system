@@ -18,7 +18,9 @@
 
 <?php
   include 'db_connect.php';
-  session_start();
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
   $username = $_SESSION['username'];
 
   $sql_5 = "SELECT * FROM users WHERE username = '$username'";
@@ -29,7 +31,9 @@
 
 <?php
 
-  session_start();
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
   $username = $_SESSION['username'];
 
   
@@ -58,7 +62,9 @@
 <?php
 
 include 'db_connect.php';
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 
 // Check if the user is logged in
 if (!isset($_SESSION['username'])) {
