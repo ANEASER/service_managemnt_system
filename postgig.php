@@ -1,3 +1,36 @@
+<html>
+<head>
+  <style>
+    .Gigs{
+      display:flex;
+      flex-direction:row;
+    }  
+
+    .navitem{
+      margin : 0.5% 2% 0.5% 2%;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .navitem:hover {
+      border: solid yellow 2px;
+      padding:5px;
+      border-radius:5px;
+    }
+
+    label, input{
+      margin: 12px;
+    }
+
+
+  </style>
+</head>
+<body style="background-color: lightgreen">
+  <nav style="dispaly:flex;padding:2%; color:white; background-color:green">
+  <a class="navitem" href="market/market.php">Market</a>
+  <a class="navitem" href="profile.php">Profile</a>
+  </nav>
+
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
@@ -35,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 }
 ?>
+<div style="margin:5% 0% 0% 40%">
 
 <!-- Create user form -->
 <form method="post">
@@ -47,6 +81,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </select><br>
   <label for="price">Your Price</label>
   <input type="number" name="price" min="0" max="30"> <br>
-  <input type="submit" value="POSTr">
+  <input type="submit" value="POST">
 
 </form>
+</div>
+</body>
+</html>
