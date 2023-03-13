@@ -16,6 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // Retrieve the user's password hash from the database
   $sql = "SELECT * FROM users WHERE username = '$username'";
   $result = mysqli_query($conn, $sql);
+
+  $error_message = "<p style='color:red;background-color:white;text-align:center'>Incorrect username or password</p>";
+
   if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_array($result);
     $password_hash = $row['password'];
@@ -31,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $_SESSION['username'] = $username;
       header('Location: profile.php');
     } else {
-      echo "Incorrect username or password";
+      echo  $error_message;
     }
    }else {
-    echo "Incorrect username or password";
+    echo  $error_message;
   }
 }
 

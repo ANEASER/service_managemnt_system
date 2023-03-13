@@ -41,6 +41,36 @@
         background-color: #3e8e41;
     }
 
+    input[type="submit"] {
+    background-color: #4CAF50;
+    color: #FFF;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    marging-left: 5%;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid black;
+    background-color: #f2f2f2;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    color: #444;
+    font-weight: bold;
+  }
+
   </style>
 </head>
 <body style="background-image:url('./styles/background.jpg')">
@@ -75,16 +105,16 @@
     if (file_exists($image_path)) {
       echo '<img src="' . $image_path . '" alt="' . $username . '" style="height: 200px;">';
     } else {
-      echo '<img src="uploads/default.jpg" style="height: 200px;" >';
+      echo '<img src="uploads/default.jpg" style="height: 200px; margin:5%" >';
     }
   ?>
   </div>
   
-  <div style="margin-left:5%">
+  <div style="margin-left:5%; padding:0 5% 0 5%; width:100%">
 
-    <p style="color:darkgreen; font-weight:900;"><?php echo $row['username']; ?></p>
+    <p style="color:darkgreen; font-weight:900; font-size:25px;"><?php echo $row['username']; ?></p>
     <p><?php echo $row['email']; ?></p>
-    <p>WALLET <?php echo $row['amount']; ?> <button> withdraw </button> </p>
+    <p>Wallet   <?php echo $row['amount']; ?> <button> withdraw </button> </p><br>
     <a class="navitem" style="color:darkgreen;font-weight:900" href="account_settings/edit_profile.php">Edit Profile</a>
     <br>
 
@@ -110,10 +140,10 @@ $sql_4 = "SELECT * FROM gigs WHERE username = '$username'";
 
 $result_3 = mysqli_query($conn, $sql_4);
 
-echo'<div class="Gigs" style="display:flex; flex-direction:row; border: solid 1px black; ">';
+echo'<div class="Gigs" style="display:flex; flex-direction:row; ">';
 // Loop through the results and display the information for each user
 while ($row = mysqli_fetch_array($result_3)) {
-  echo '<div style="margin : 2%">';
+  echo '<div style="margin : 1% ;padding:2%;background-color:lightgreen;color:green">';
   echo "<p>ID: " . $row['id'] . "</p>";
   echo "<p>Username: " . $row['username'] . "</p>";
   echo "<p>Service: " . $row['gig_name'] . "</p>";
@@ -147,10 +177,10 @@ $row = mysqli_fetch_array($result);
 $result_1 = mysqli_query($conn, $sql_2);
 $result_2 = mysqli_query($conn, $sql_3);
 
-echo '<div style="display:flex; flex-direction:row; margin:5%">';
+echo '<div style="display:flex; flex-direction:row; margin:1%; background-color:lightgreen; padding-left: 5%">';
 echo '<div>';
 if (mysqli_num_rows($result_1) > 0) {
-  echo "<p text-align:center>Buying<p>";
+  echo "<p style='text-align:center'>Buying<p>";
   echo "<table>";
   echo "<tr>";
   echo "<th>Ref_ID  </th>";
@@ -168,13 +198,13 @@ if (mysqli_num_rows($result_1) > 0) {
 
 echo "</table>";
 } else {
-   echo "<p>None</p>";
+   echo "";
 }
 echo '</div>';
 
 echo '<div style="margin-left:5%">';
 if (mysqli_num_rows($result_2) > 0) {
-  echo "Selling";
+  echo "<p  style='text-align:center'>Selling<p>";
   echo "<table>";
   echo "<tr>";
   echo "<th>Ref_ID</th>";
@@ -192,7 +222,7 @@ if (mysqli_num_rows($result_2) > 0) {
 
 echo "</table>";
 } else {
-   echo "<p>None</p>";
+   echo "";
 }
 echo '</div>';
 echo '</div>';

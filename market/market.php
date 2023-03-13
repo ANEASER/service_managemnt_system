@@ -49,10 +49,10 @@ $sql = "SELECT * FROM gigs WHERE username != '$current_user'";
 // Execute the statement
 $result = mysqli_query($conn, $sql);
 
-echo'<div class="Gigs" style="background-color:white; padding:3%">';
+echo'<div class="Gigs" style="background-color:white; padding:3%;justify-content: flex-start;">';
 // Loop through the results and display the information for each user
 while ($row = mysqli_fetch_array($result)) {
-  echo'<div style="background-color:green; padding:3%; color:white">';
+  echo'<div style="background-color:green; padding:3%; color:white; margin-right:3%">';
   echo "<p>Provider: " . $row['username'] . "</p>";
   echo "<p>Service: " . $row['gig_name'] . "</p>";
   echo "<p>Price: " . $row['price'] . "</p>";
