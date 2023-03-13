@@ -23,10 +23,27 @@
       text-align:center;
     }
 
+    button {
+        background-color: #4CAF50;
+        border: none;
+        color: #FFF;
+        padding: 6px 14px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #3e8e41;
+    }
 
   </style>
 </head>
-<body style="background-color: lightgreen">
+<body style="background-image:url('./styles/background.jpg')">
   <nav style="dispaly:flex;padding:2%; color:white; background-color:green">
   <a class="navitem" href="market/market.php">Market</a>
   <a class="navitem" href="postgig.php">Post a GIG</a>
@@ -45,7 +62,7 @@
 
 ?>
 
-<div class="profile" style="display:flex; flex-direction:row; margin: 2% 0% 2% 0%; color:green">
+<div class="profile" style="display:flex; flex-direction:row; margin: 2% 0% 2% 0%; ">
 
   <div>
   <?php

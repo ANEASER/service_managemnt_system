@@ -17,15 +17,10 @@
       padding:5px;
       border-radius:5px;
     }
-
-    label, input{
-      margin: 12px;
-    }
-
-
   </style>
+  <link rel="stylesheet" href="./styles/login_create_styles.css">
 </head>
-<body style="background-color: lightgreen">
+<body style="background-image:url('./styles/background.jpg')">
   <nav style="dispaly:flex;padding:2%; color:white; background-color:green">
   <a class="navitem" href="market/market.php">Market</a>
   <a class="navitem" href="profile.php">Profile</a>

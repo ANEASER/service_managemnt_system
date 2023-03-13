@@ -1,3 +1,10 @@
+<html>
+<head>
+ <title>Servie Online</title>
+ <link rel="stylesheet" href="./styles/login_create_styles.css">
+</head>
+<body style="background-image:url('./styles/background.jpg')">
+
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
@@ -43,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <!-- Create user form -->
+<center>
 <form method="post">
   <label for="username">Username:</label>
   <input type="text" id="username" name="username">
@@ -60,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </form>
 <p>Already have an account?</p>
 <a href="login.php">Login</a>
-
+</center>
 
 <script>
   const selectElements = document.querySelectorAll("select");
@@ -77,7 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   });
 </script>
 
-
+</body>
+</html>
 
 
 

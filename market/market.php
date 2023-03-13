@@ -21,7 +21,7 @@
 
   </style>
 </head>
-<body style="background-color: lightgreen">
+<body style="background-image:url('../styles/background.jpg')">
   <nav style="dispaly:flex;padding:2%; color:white; background-color:green">
   <a class="navitem" href="../profile.php">Profile</a>
   <a class="navitem" href="../postgig.php">Post a GIG</a>

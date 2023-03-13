@@ -1,0 +1,46 @@
+form {
+    width: 50%;
+    border: 2px solid #CCC;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+  }
+
+  select,
+  input[type="number"],
+  input[type="text"],
+  input[type="password"],
+  input[type="email"]  {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: #FFF;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }

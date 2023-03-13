@@ -1,3 +1,9 @@
+<html>
+<head>
+ <title>Servie Online</title>
+ <link rel="stylesheet" href="./styles/login_create_styles.css">
+</head>
+<body style="background-image:url('./styles/background.jpg')">
 <?php
 
 include 'db_connect.php';
@@ -27,11 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
       echo "Incorrect username or password";
     }
-  // } else if (($username =='Admin') && ($password == 'password')) {
-  //     session_start();
-  //     $_SESSION['username'] = $username;
-  //     header('Location: admin.php');
-  //     exit;
    }else {
     echo "Incorrect username or password";
   }
@@ -39,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 
-<!-- Login form -->
+<center>
 <form method="post">
   <label for="username">Username:</label>
   <input type="text" id="username" name="username">
@@ -51,3 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </form>
 <p>Haven't an account?</p>
 <a href="create_user.php">Register</a>
+</center>
+
+</body>
+</html>
