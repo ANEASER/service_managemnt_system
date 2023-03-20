@@ -21,8 +21,8 @@ $seller_result = mysqli_query($conn, $seller_sql);
 $seller = mysqli_fetch_array($seller_result);
 
 $amount = $seller['price'];
-$commision = $amount*0.25;
-$amount = $amount*0.75;
+$commision = $amount*0.15;
+$amount = $amount*0.85;
 
 $sql = "UPDATE users SET amount = amount + $amount WHERE username = '$seller_username'";
 

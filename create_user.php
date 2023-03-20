@@ -1,3 +1,10 @@
+<html>
+<head>
+ <title>Servie Online</title>
+ <link rel="stylesheet" href="./styles/login_create_styles.css">
+</head>
+<body style="background-image:url('./styles/background.jpg')">
+
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
@@ -9,21 +16,21 @@ include 'db_connect.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $username = $_POST['username'];
   $email = $_POST['email'];
-  $password = $_POST['password']; //if this hashed this won't work
+  $password = $_POST['password']; 
   $password_1 = $_POST['password_1'];
   $amount =  0;
 
-  // Check if the username already exists
+  
   $sql = "SELECT username FROM users WHERE username = '$username'";
   $result = mysqli_query($conn, $sql);
   $num_rows = mysqli_num_rows($result);
   
   if ($num_rows > 0) {
-    echo "Error: The username is already taken";
+    echo "<p style='color:red;background-color:white;text-align:center'>Error: The username is already taken</p>";
   }
 
   elseif( $password != $password_1){
-    echo "Passwords not match";
+    echo "<p style='color:red;background-color:white;text-align:center'>Passwords not match</p>";
   }
 
   else {
@@ -43,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <!-- Create user form -->
+<center>
 <form method="post">
   <label for="username">Username:</label>
   <input type="text" id="username" name="username">
@@ -60,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </form>
 <p>Already have an account?</p>
 <a href="login.php">Login</a>
-
+</center>
 
 <script>
   const selectElements = document.querySelectorAll("select");
@@ -77,7 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   });
 </script>
 
-
+</body>
+</html>
 
 
 

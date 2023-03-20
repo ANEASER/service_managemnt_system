@@ -1,3 +1,9 @@
+<html>
+<head>
+ <title>Servie Online</title>
+ <link rel="stylesheet" href="./styles/login_create_styles.css">
+</head>
+<body style="background-image:url('./styles/background.jpg')">
 <?php
 
 include 'db_connect.php';
@@ -10,6 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // Retrieve the user's password hash from the database
   $sql = "SELECT * FROM users WHERE username = '$username'";
   $result = mysqli_query($conn, $sql);
+
+  $error_message = "<p style='color:red;background-color:white;text-align:center'>Incorrect username or password</p>";
+
   if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_array($result);
     $password_hash = $row['password'];
@@ -25,21 +34,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $_SESSION['username'] = $username;
       header('Location: profile.php');
     } else {
-      echo "Incorrect username or password";
+      echo  $error_message;
     }
-  // } else if (($username =='Admin') && ($password == 'password')) {
-  //     session_start();
-  //     $_SESSION['username'] = $username;
-  //     header('Location: admin.php');
-  //     exit;
    }else {
-    echo "Incorrect username or password";
+    echo  $error_message;
   }
 }
 
 ?>
 
-<!-- Login form -->
+<center>
 <form method="post">
   <label for="username">Username:</label>
   <input type="text" id="username" name="username">
@@ -51,3 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </form>
 <p>Haven't an account?</p>
 <a href="create_user.php">Register</a>
+</center>
+
+</body>
+</html>

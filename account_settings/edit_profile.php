@@ -1,3 +1,10 @@
+<html>
+<head>
+ <title>Servie Online</title>
+ <link rel="stylesheet" href="../styles/login_create_styles.css">
+</head>
+<body style="background-image:url('../styles/background.jpg')">
+
 <?php
     include '../db_connect.php';
 
@@ -5,7 +12,7 @@
     session_start();
     $username = $_SESSION['username'];
 
-    echo $username;
+    echo '<p style="text-align:center;font-weight:bolder;color:green;font-size:26px">'.$username.'</p>';
     
     // Check if the user is logged in
     if (!isset($_SESSION['username'])) {
@@ -45,6 +52,8 @@
     
 ?>
 
+<center>
+
 <form method="post" action="">
   <label for="username">Username:</label>
   <input type="text" id="username" name="username">
@@ -62,6 +71,8 @@
   <input type="submit" name="submit" value="Upload">
 </form>
 
+</center>
 
-
+</body>
+</html>
 
