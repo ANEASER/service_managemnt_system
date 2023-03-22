@@ -79,6 +79,7 @@
   <a class="navitem" href="postgig.php">Post a GIG</a>
   <a class="navitem" href="account_settings/logout.php">Logout</a>
   <a class="navitem" href="account_settings/deactivate.php">Deactivate</a>
+  <a class="navitem" href="help.php">Help !</a>
   </nav>
 
 <?php
@@ -150,7 +151,7 @@ while ($row = mysqli_fetch_array($result_3)) {
   echo "<p>Price: " . $row['price'] . "</p>";
   echo "<form method='post' action=''>
           <input type='hidden' name='id' value='" . $row['id'] . "'>
-          <input type='submit' name='delete' value='Delete'>
+          <input style='background-color: red' type='submit' name='delete' value='Delete'>
         </form>";
   echo '</div>';
 }
@@ -183,7 +184,7 @@ if (mysqli_num_rows($result_1) > 0) {
   echo "<p style='text-align:center'>Buying<p>";
   echo "<table>";
   echo "<tr>";
-  echo "<th>Ref_ID  </th>";
+  echo "<th>Refference ID</th>";
   echo "<th>seller  </th>";
   echo "<th>sale  </th>";
   echo "</tr>";
