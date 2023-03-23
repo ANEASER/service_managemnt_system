@@ -44,9 +44,3 @@ form {
   a:hover {
     text-decoration: underline;
   }
-
-  #sitename{
-    text-align: center;
-    color: white;
-    font-family: 'Segoe UI';
-  }
