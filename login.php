@@ -4,6 +4,7 @@
  <link rel="stylesheet" href="./styles/login_create_styles.css">
 </head>
 <body style="background-image:url('./styles/background.jpg')">
+<h1 id="sitename" style="text-align: center;color: white;font-family: 'Segoe UI';">U30$ SERVICES</h1>
 <?php
 
 include 'db_connect.php';

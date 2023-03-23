@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 }
 ?>
-<div style="margin:5% 0% 0% 40%">
+<div style="display:flex; justify-content:center">
 
 <!-- Create user form -->
 <form method="post">
