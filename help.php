@@ -35,8 +35,10 @@
                 </div>
 			</li>
 		</ul>
+        
 	</main>
-
+        <h3 style="margin : 0 0 2% 1%;">for further questions Contact Us</h3>
+        <a class="navitem" style="background-color:blue; color:white; padding:1%; margin-top: 1%;" href="mailto:example@example.com" class="email-button">Email Us</a>
     <style>
                 body { margin: 0; padding: 0;}
                 .navitem{ margin : 0.5% 2% 0.5% 2%; text-decoration: none; color: inherit;}
