@@ -33,6 +33,7 @@ form {
     padding: 10px 20px;
     cursor: pointer;
     margin-top: 10px;
+    font-weight: bolder;
   }
 
   a {

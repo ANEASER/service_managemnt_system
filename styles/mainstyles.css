@@ -1,0 +1,22 @@
+nav{
+    display:flex; padding:1%;color:white;flex-direction:row;
+  }
+  
+  .navitem{
+  text-decoration: none;
+  color: inherit;
+  margin-right:1%;
+  font-weight: bolder;
+  }
+
+  .navitem:hover {
+  background-color: rgba(204, 204, 204, 0.418);
+  border-radius:5px;
+  text-decoration: none;
+  }
+
+  body{
+    font-family: 'Segoe UI';
+    background-size: cover;
+    font-size:20px;
+  }

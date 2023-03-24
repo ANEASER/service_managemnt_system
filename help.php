@@ -2,11 +2,12 @@
 <html>
 <head>
 	<title>Help Page</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="./styles/mainstyles.css">
+    <link rel="stylesheet" href="./styles/login_create_styles.css">
 	<script src="script.js"></script>
 </head>
-<body style="background-image:url('./styles/background.jpg')">
-    <nav style="dispaly:flex;padding:2%; color:white; background-color:green">
+<body style="background-image:url('./styles/background.jpg');background-size: cover;">
+    <nav>
     <a class="navitem" href="profile.php">Back to Profile</a>
     <a class="navitem" href="market/market.php">Market</a>
     <a class="navitem" href="postgig.php">Post a GIG</a>
@@ -37,12 +38,9 @@
 		</ul>
         
 	</main>
-        <h3 style="margin : 0 0 2% 1%;">for further questions Contact Us</h3>
-        <a class="navitem" style="background-color:blue; color:white; padding:1%; margin-top: 1%;" href="mailto:example@example.com" class="email-button">Email Us</a>
+        <h3 style="margin : 0 0 2% 1%; color:white">for further questions Contact Us</h3>
+        <a  class='navitem' style="background-color:blue; color:white; padding:1%; margin-top: 1%; margin-left:1%" href="mailto:example@example.com" class="email-button">Email Us</a>
     <style>
-                body { margin: 0; padding: 0;}
-                .navitem{ margin : 0.5% 2% 0.5% 2%; text-decoration: none; color: inherit;}
-                .navitem:hover {border: solid yellow 2px;padding:5px;border-radius:5px;}
                 header {background-color: #333;color: #fff;padding: 20px;}
                 header h1 { margin: 0;}
                 main {padding: 20px;}

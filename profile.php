@@ -1,22 +1,11 @@
 <html>
 <head>
+<link rel="stylesheet" href="./styles/mainstyles.css">
   <style>
     .Gigs{
       display:flex;
       flex-direction:row;
     }  
-
-    .navitem{
-      margin : 0.5% 2% 0.5% 2%;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .navitem:hover {
-      border: solid yellow 2px;
-      padding:5px;
-      border-radius:5px;
-    }
 
     th, td{
       padding:2px 45px 2px 0px;
@@ -73,13 +62,13 @@
 
   </style>
 </head>
-<body style="background-image:url('./styles/background.jpg')">
-  <nav style="dispaly:flex;padding:2%; color:white; background-color:green">
-  <a class="navitem" href="market/market.php">Market</a>
-  <a class="navitem" href="postgig.php">Post a GIG</a>
-  <a class="navitem" href="account_settings/logout.php">Logout</a>
-  <a class="navitem" href="account_settings/deactivate.php">Deactivate</a>
-  <a class="navitem" href="help.php">Help !</a>
+<body style="background-image:url('./styles/background.jpg'); ">
+  <nav>
+      <a class="navitem" href="market/market.php">Market</a>
+      <a class="navitem" href="postgig.php">Post a GIG</a>
+      <a class="navitem" href="help.php">Help !</a>
+      <a class="navitem" href="account_settings/logout.php">Logout</a>
+      <a class="navitem" href="account_settings/deactivate.php">Deactivate</a>
   </nav>
 
 <?php
@@ -93,7 +82,7 @@
 
 ?>
 
-<div class="profile" style="display:flex; flex-direction:row; margin: 2% 0% 2% 0%; ">
+<div class="profile" style="display:flex; flex-direction:row; margin: 2% 0% 2% 0%;background-color: rgba(204, 204, 204, 0.418); padding:2% ">
 
   <div>
   <?php
@@ -113,10 +102,10 @@
   
   <div style="margin-left:5%; padding:0 5% 0 5%; width:100%">
 
-    <p style="color:darkgreen; font-weight:900; font-size:25px;"><?php echo $row['username']; ?></p>
-    <p><?php echo $row['email']; ?></p>
-    <p>Wallet   <?php echo $row['amount']; ?> <button> withdraw </button> </p><br>
-    <a class="navitem" style="color:darkgreen;font-weight:900" href="account_settings/edit_profile.php">Edit Profile</a>
+    <p><span style="color:darkgreen; font-weight:900; font-size:25px;"><?php echo $row['username']; ?></span><br>
+    <?php echo $row['email']; ?></p>
+    Wallet   <?php echo $row['amount']; ?> <button> withdraw </button> </p><br>
+    <a class="navitem" style="color:darkgreen;font-weight:900;background-color:yellow" href="account_settings/edit_profile.php">Edit Profile</a>
     <br>
 
   </div>
@@ -141,12 +130,11 @@ $sql_4 = "SELECT * FROM gigs WHERE username = '$username'";
 
 $result_3 = mysqli_query($conn, $sql_4);
 
-echo'<div class="Gigs" style="display:flex; flex-direction:row; ">';
+echo'<div class="Gigs" style="display:flex; flex-direction:row;flex-wrap:wrap ">';
 // Loop through the results and display the information for each user
 while ($row = mysqli_fetch_array($result_3)) {
   echo '<div style="margin : 1% ;padding:2%;background-color:lightgreen;color:green">';
   echo "<p>ID: " . $row['id'] . "</p>";
-  echo "<p>Username: " . $row['username'] . "</p>";
   echo "<p>Service: " . $row['gig_name'] . "</p>";
   echo "<p>Price: " . $row['price'] . "</p>";
   echo "<form method='post' action=''>
@@ -154,7 +142,7 @@ while ($row = mysqli_fetch_array($result_3)) {
           <input style='background-color: red' type='submit' name='delete' value='Delete'>
         </form>";
   echo '</div>';
-}
+} //
 
 echo '</div>';
 
@@ -208,7 +196,7 @@ if (mysqli_num_rows($result_2) > 0) {
   echo "<p  style='text-align:center'>Selling<p>";
   echo "<table>";
   echo "<tr>";
-  echo "<th>Ref_ID</th>";
+  echo "<th>Refference ID</th>";
   echo "<th>buyer</th>";
   echo "<th>sale</th>";
   echo "</tr>";
