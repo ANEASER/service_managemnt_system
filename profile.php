@@ -82,7 +82,7 @@
 
 ?>
 
-<div class="profile" style="display:flex; flex-direction:row; margin: 2% 0% 2% 0%; ">
+<div class="profile" style="display:flex; flex-direction:row; margin: 2% 0% 2% 0%;background-color: rgba(204, 204, 204, 0.418); padding:2% ">
 
   <div>
   <?php
@@ -102,10 +102,10 @@
   
   <div style="margin-left:5%; padding:0 5% 0 5%; width:100%">
 
-    <p style="color:darkgreen; font-weight:900; font-size:25px;"><?php echo $row['username']; ?></p>
-    <p><?php echo $row['email']; ?></p>
-    <p>Wallet   <?php echo $row['amount']; ?> <button> withdraw </button> </p><br>
-    <a class="navitem" style="color:darkgreen;font-weight:900" href="account_settings/edit_profile.php">Edit Profile</a>
+    <p><span style="color:darkgreen; font-weight:900; font-size:25px;"><?php echo $row['username']; ?></span><br>
+    <?php echo $row['email']; ?></p>
+    Wallet   <?php echo $row['amount']; ?> <button> withdraw </button> </p><br>
+    <a class="navitem" style="color:darkgreen;font-weight:900;background-color:yellow" href="account_settings/edit_profile.php">Edit Profile</a>
     <br>
 
   </div>
@@ -196,7 +196,7 @@ if (mysqli_num_rows($result_2) > 0) {
   echo "<p  style='text-align:center'>Selling<p>";
   echo "<table>";
   echo "<tr>";
-  echo "<th>Ref_ID</th>";
+  echo "<th>Refference ID</th>";
   echo "<th>buyer</th>";
   echo "<th>sale</th>";
   echo "</tr>";
