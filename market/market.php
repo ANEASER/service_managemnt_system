@@ -1,6 +1,6 @@
 <html>
 <head>
-  <link rel="stylesheet" href="../styles/mainstyles.css">
+  <link rel="stylesheet" href="./styles/mainstyles.css">
   <style>
    
     .Gigs{
@@ -22,7 +22,7 @@
 
   </style>
 </head>
-<body style="background-image:url('../styles/background.jpg')">
+<body style="background-image:url('../styles/background.jpg');background-size: cover;">
   <nav>
   <a class="navitem" href="../profile.php">Profile</a>
   <a class="navitem" href="../postgig.php">Post a GIG</a>

@@ -1,11 +1,10 @@
 nav{
-    display:flex;height: 6%; padding:1%;color:white;flex-direction:row;
+    display:flex; padding:1%;color:white;flex-direction:row;
   }
   
   .navitem{
   text-decoration: none;
   color: inherit;
-  padding:5px;
   margin-right:1%;
   font-weight: bolder;
   }
