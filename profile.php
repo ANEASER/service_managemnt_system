@@ -1,22 +1,11 @@
 <html>
 <head>
+<link rel="stylesheet" href="./styles/mainstyles.css">
   <style>
     .Gigs{
       display:flex;
       flex-direction:row;
     }  
-
-    .navitem{
-      margin : 0.5% 2% 0.5% 2%;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .navitem:hover {
-      border: solid yellow 2px;
-      padding:5px;
-      border-radius:5px;
-    }
 
     th, td{
       padding:2px 45px 2px 0px;
@@ -73,13 +62,13 @@
 
   </style>
 </head>
-<body style="background-image:url('./styles/background.jpg')">
-  <nav style="dispaly:flex;padding:2%; color:white; background-color:green">
-  <a class="navitem" href="market/market.php">Market</a>
-  <a class="navitem" href="postgig.php">Post a GIG</a>
-  <a class="navitem" href="account_settings/logout.php">Logout</a>
-  <a class="navitem" href="account_settings/deactivate.php">Deactivate</a>
-  <a class="navitem" href="help.php">Help !</a>
+<body style="background-image:url('./styles/background.jpg'); ">
+  <nav>
+      <a class="navitem" href="market/market.php">Market</a>
+      <a class="navitem" href="postgig.php">Post a GIG</a>
+      <a class="navitem" href="help.php">Help !</a>
+      <a class="navitem" href="account_settings/logout.php">Logout</a>
+      <a class="navitem" href="account_settings/deactivate.php">Deactivate</a>
   </nav>
 
 <?php
@@ -141,12 +130,11 @@ $sql_4 = "SELECT * FROM gigs WHERE username = '$username'";
 
 $result_3 = mysqli_query($conn, $sql_4);
 
-echo'<div class="Gigs" style="display:flex; flex-direction:row; ">';
+echo'<div class="Gigs" style="display:flex; flex-direction:row;flex-wrap:wrap ">';
 // Loop through the results and display the information for each user
 while ($row = mysqli_fetch_array($result_3)) {
   echo '<div style="margin : 1% ;padding:2%;background-color:lightgreen;color:green">';
   echo "<p>ID: " . $row['id'] . "</p>";
-  echo "<p>Username: " . $row['username'] . "</p>";
   echo "<p>Service: " . $row['gig_name'] . "</p>";
   echo "<p>Price: " . $row['price'] . "</p>";
   echo "<form method='post' action=''>
@@ -154,7 +142,7 @@ while ($row = mysqli_fetch_array($result_3)) {
           <input style='background-color: red' type='submit' name='delete' value='Delete'>
         </form>";
   echo '</div>';
-}
+} //
 
 echo '</div>';
 

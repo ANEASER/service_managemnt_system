@@ -1,27 +1,17 @@
 <html>
 <head>
+<link rel="stylesheet" href="./styles/mainstyles.css">
+<link rel="stylesheet" href="./styles/login_create_styles.css">
   <style>
     .Gigs{
       display:flex;
       flex-direction:row;
     }  
-
-    .navitem{
-      margin : 0.5% 2% 0.5% 2%;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .navitem:hover {
-      border: solid yellow 2px;
-      padding:5px;
-      border-radius:5px;
-    }
   </style>
-  <link rel="stylesheet" href="./styles/login_create_styles.css">
+  
 </head>
 <body style="background-image:url('./styles/background.jpg')">
-  <nav style="dispaly:flex;padding:2%; color:white; background-color:green">
+  <nav>
   <a class="navitem" href="market/market.php">Market</a>
   <a class="navitem" href="profile.php">Profile</a>
   </nav>
@@ -63,10 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 }
 ?>
-<div style="display:flex; justify-content:center">
+<div class="form" style="display:flex; justify-content:center;">
 
-<!-- Create user form -->
-<form method="post">
+<form method="post" style="background-color: rgba(204, 204, 204, 0.418);">
   <label for="select_2">Select an option:</label>
   <select id="select_2" name="service">
     <option value="None">None</option>

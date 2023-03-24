@@ -1,28 +1,29 @@
 <html>
 <head>
+  <link rel="stylesheet" href="../styles/mainstyles.css">
   <style>
+   
     .Gigs{
       display:flex;
       flex-direction:row;
+      font-weight:bolder;
     }  
 
-    .navitem{
-      margin : 0.5% 2% 0.5% 2%;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .navitem:hover {
-      border: solid yellow 2px;
-      padding:5px;
-      border-radius:5px;
-    }
-
+    input[type="submit"] {
+    background-color: #4CAF50;
+    color:white;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bolder;
+  }
 
   </style>
 </head>
 <body style="background-image:url('../styles/background.jpg')">
-  <nav style="dispaly:flex;padding:2%; color:white; background-color:green">
+  <nav>
   <a class="navitem" href="../profile.php">Profile</a>
   <a class="navitem" href="../postgig.php">Post a GIG</a>
   </nav>
@@ -49,10 +50,10 @@ $sql = "SELECT * FROM gigs WHERE username != '$current_user'";
 // Execute the statement
 $result = mysqli_query($conn, $sql);
 
-echo'<div class="Gigs" style="background-color:white; padding:3%;justify-content: flex-start;">';
+echo'<div class="Gigs" style="background-color: rgba(204, 204, 204, 0.418); padding:3%;justify-content: flex-start;border-radius:5px;flex-wrap:wrap">';
 // Loop through the results and display the information for each user
 while ($row = mysqli_fetch_array($result)) {
-  echo'<div style="background-color:green; padding:3%; color:white; margin-right:3%">';
+  echo'<div style="background-color:green; padding:3%; color:white; margin-right:3%;border-radius:5px">';
   echo "<p>Provider: " . $row['username'] . "</p>";
   echo "<p>Service: " . $row['gig_name'] . "</p>";
   echo "<p>Price: " . $row['price'] . "</p>";

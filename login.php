@@ -2,6 +2,7 @@
 <head>
  <title>Servie Online</title>
  <link rel="stylesheet" href="./styles/login_create_styles.css">
+ <link rel="stylesheet" href="./styles/mainstyles.css">
 </head>
 <body style="background-image:url('./styles/background.jpg')">
 <h1 id="sitename" style="text-align: center;color: white;font-family: 'Segoe UI';">U30$ SERVICES</h1>
@@ -45,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <center>
-<form method="post">
+<form method="post" style="background-color: rgba(204, 204, 204, 0.418);">
   <label for="username">Username:</label>
   <input type="text" id="username" name="username">
   <br>
